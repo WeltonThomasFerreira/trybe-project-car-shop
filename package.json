@@ -8,7 +8,12 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest -i --forceExit --verbose",
     "test:dev": "mocha -r ts-node/register src/tests/unit/**/*.test.ts --exit -t 60000",
-    "test:coverage": "nyc npm run test:dev"
+    "test:coverage": "nyc npm run test:dev",
+    "mongo:up": "docker run --name car-shop -p 27017:27017 -d mongo",
+    "mongo:down": "docker stop -t 0 car-shop && docker rm car-shop",
+    "mongo:start": "docker start car-shop",
+    "mongo:stop": "docker stop -t 0 car-shop",
+    "mongo:sh": "docker exec -it car-shop mongosh"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.2",
