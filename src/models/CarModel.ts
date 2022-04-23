@@ -6,16 +6,19 @@ import mongoose from 'mongoose';
 import { Car } from '../interfaces/CarInterface';
 import { Model } from '../interfaces/ModelInterface';
 
-export class CarModel implements Model<Car> {
-  private readonly _carModel = mongoose.model('Car', new mongoose.Schema({
-    model: String, // min(3)
-    year: Number, // >= 1900 && <= 2022
-    color: String, // min(3)
-    status: Boolean,
-    buyValue: Number, // only INT
-    doorsQty: Number, // >= 2 && <= 4
-    seatsQty: Number, // >= 2 && <= 7
-  }));
+export default class CarModel implements Model<Car> {
+  private readonly _carModel = mongoose.model(
+    'Car',
+    new mongoose.Schema({
+      model: String,
+      year: Number,
+      color: String,
+      status: Boolean,
+      buyValue: Number,
+      doorsQty: Number,
+      seatsQty: Number,
+    }),
+  );
 
   async create(car: Car): Promise<Car> {
     const { model, year, color, status, buyValue, doorsQty, seatsQty } = car;
@@ -48,5 +51,3 @@ export class CarModel implements Model<Car> {
     throw new Error('Method not implemented.');
   }
 }
-
-export default { CarModel };
