@@ -22,7 +22,6 @@ export default class RegisterCarController implements IController<IRequest> {
   async handle(req: IRequest): Promise<IResponse> {
     try {
       const error = await this._carValidation.validate(req.body);
-      console.log(error);
       if (error) return badRequest(error);
       const response = await this._carModel.create(req.body);
       return created(response);

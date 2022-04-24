@@ -17,6 +17,7 @@ export default class CarModel implements Model<Car> {
       buyValue: Number,
       doorsQty: Number,
       seatsQty: Number,
+      __v: { type: Number, select: false },
     }),
   );
 
@@ -36,7 +37,8 @@ export default class CarModel implements Model<Car> {
   }
 
   async read(): Promise<Car[]> {
-    throw new Error('Method not implemented.');
+    const cars = await this._carModel.find({});
+    return cars;
   }
 
   async readOne(args: string): Promise<Car | null> {

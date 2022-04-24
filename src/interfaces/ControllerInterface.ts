@@ -1,5 +1,5 @@
 import { IResponse } from './ResponseInterface';
 
-export interface IController<IRequest> {
-  handle(req: IRequest): Promise<IResponse>;
+export interface IController<IRequest = null> {
+  handle(req?: IRequest): Promise<IResponse>;
 }
