@@ -15,3 +15,8 @@ export const created = (data: unknown): IResponse => ({
   statusCode: 201,
   body: data,
 });
+
+export const ok = (data: unknown): IResponse => ({
+  statusCode: 200,
+  body: data,
+});
