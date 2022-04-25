@@ -1,29 +1,29 @@
 import { serverError, created, badRequest } from '../helpers/httpHelpers';
 import { Car } from '../interfaces/CarInterface';
-import { IResponse } from '../interfaces/ResponseInterface';
+import { Response } from '../interfaces/ResponseInterface';
 import { Model } from '../interfaces/ModelInterface';
 import { Service } from '../interfaces/ServiceInterface';
-import { IController } from '../interfaces/ControllerInterface';
+import { Controller } from '../interfaces/ControllerInterface';
 
-export interface IRequest {
+export interface Request {
   body: Car;
 }
 
-export default class RegisterCarController implements IController<IRequest> {
-  private readonly _carModel;
+export default class RegisterCar implements Controller<Request> {
+  private readonly _carRepository;
 
-  private readonly _carValidation;
+  private readonly _carValidator;
 
-  constructor(model: Model<Car>, service: Service<Car>) {
-    this._carModel = model;
-    this._carValidation = service;
+  constructor(model: Model<Car>, validator: Service<Car>) {
+    this._carRepository = model;
+    this._carValidator = validator;
   }
 
-  async handle(req: IRequest): Promise<IResponse> {
+  async handle(req: Request): Promise<Response> {
     try {
-      const error = await this._carValidation.validate(req.body);
+      const error = await this._carValidator.validate(req.body);
       if (error) return badRequest(error);
-      const response = await this._carModel.create(req.body);
+      const response = await this._carRepository.create(req.body);
       return created(response);
     } catch (error) {
       return serverError(error as Error);

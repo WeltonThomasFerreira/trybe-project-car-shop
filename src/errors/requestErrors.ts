@@ -1,31 +1,31 @@
-export const MODEL_IS_REQUIRED = new Error(
+export const modelIsRequired = new Error(
   'Model is required with a minimum length of 3 characters.',
 );
 
-export const YEAR_IS_REQUIRED = new Error(
+export const yearIsRequired = new Error(
   'Year is required with a value between 1900 and 2022',
 );
 
-export const COLOR_IS_REQUIRED = new Error(
+export const colorIsRequired = new Error(
   'Color is required with a minimum length of 3 characters.',
 );
 
-export const STATUS_SHOULD_BE_BOOL = new Error(
+export const statusShouldBeBool = new Error(
   'Status should be a boolean type.',
 );
 
-export const BUY_VALUE_IS_REQUIRED = new Error(
+export const buyValueIsRequired = new Error(
   'Buy value is required and should be a integer type.',
 );
 
-export const DOORS_QTY_IS_REQUIRED = new Error(
+export const doorsQtyIsRequired = new Error(
   'Doors qunatity is required with a value between 2 and 4',
 );
 
-export const SEATS_QTY_IS_REQUIRED = new Error(
+export const seatsQtyIsRequired = new Error(
   'Seats qunatity is required with a value between 2 and 7',
 );
 
-export const MALFORMED_ID = new Error('Id must have 24 hexadecimal characters');
+export const malformedId = new Error('Id must have 24 hexadecimal characters');
 
-export const INVALID_ID = new Error('Object not found');
+export const invalidId = new Error('Object not found');

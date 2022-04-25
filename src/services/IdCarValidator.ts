@@ -1,10 +1,10 @@
 import Joi from 'joi';
-import { MALFORMED_ID } from '../errors/requestErrors';
+import { malformedId } from '../errors/requestErrors';
 import { Service } from '../interfaces/ServiceInterface';
 
 export default class IdCarValidator implements Service<string> {
   private readonly _schema = Joi.object({
-    id: Joi.string().required().min(24).error(MALFORMED_ID),
+    id: Joi.string().required().min(24).error(malformedId),
   });
 
   public async validate(params: unknown): Promise<Error | null> {

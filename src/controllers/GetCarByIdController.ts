@@ -1,33 +1,35 @@
 import { Model } from '../interfaces/ModelInterface';
 import { Car } from '../interfaces/CarInterface';
-import { IController } from '../interfaces/ControllerInterface';
-import { IResponse } from '../interfaces/ResponseInterface';
+import { Controller } from '../interfaces/ControllerInterface';
+import { Response } from '../interfaces/ResponseInterface';
 import { badRequest, notFound, ok, serverError } from '../helpers/httpHelpers';
 import { Service } from '../interfaces/ServiceInterface';
-import { INVALID_ID } from '../errors/requestErrors';
+import { invalidId } from '../errors/requestErrors';
 
-export interface IRequest {
+export interface Request {
   params: {
     id?: string;
   };
 }
 
-export default class GetCarByIdController implements IController<IRequest> {
-  private readonly _carModel;
+export default class GetCarById implements Controller<Request> {
+  private readonly _carRepository;
 
-  private readonly _idCarValidator;
+  private readonly _carIdValidator;
 
-  constructor(model: Model<Car>, service: Service<unknown>) {
-    this._carModel = model;
-    this._idCarValidator = service;
+  constructor(model: Model<Car>, validator: Service<unknown>) {
+    this._carRepository = model;
+    this._carIdValidator = validator;
   }
 
-  async handle(req: IRequest): Promise<IResponse> {
+  async handle(req: Request): Promise<Response> {
     try {
-      const error = await this._idCarValidator.validate(req.params);
+      const error = await this._carIdValidator.validate(req.params);
       if (error) return badRequest(error);
-      const response = await this._carModel.readOne(req.params.id as string);
-      if (response === null) return notFound(INVALID_ID);
+      const response = await this._carRepository.readOne(
+        req.params.id as string,
+      );
+      if (response === null) return notFound(invalidId);
       return ok(response);
     } catch (error) {
       return serverError(error as Error);
