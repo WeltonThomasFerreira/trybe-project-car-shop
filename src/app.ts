@@ -17,8 +17,8 @@ class App {
     );
   }
 
-  public addRouter(router: Router) {
-    this.app.use(router);
+  public addRouter(path: string, router: Router) {
+    this.app.use(path, router);
   }
 
   public getApp() {
