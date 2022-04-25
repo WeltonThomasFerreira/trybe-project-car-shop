@@ -25,3 +25,7 @@ export const DOORS_QTY_IS_REQUIRED = new Error(
 export const SEATS_QTY_IS_REQUIRED = new Error(
   'Seats qunatity is required with a value between 2 and 7',
 );
+
+export const MALFORMED_ID = new Error('Id must have 24 hexadecimal characters');
+
+export const INVALID_ID = new Error('Object not found');
