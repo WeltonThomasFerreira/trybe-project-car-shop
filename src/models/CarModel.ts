@@ -41,8 +41,9 @@ export default class CarModel implements Model<Car> {
     return cars;
   }
 
-  async readOne(args: string): Promise<Car | null> {
-    throw new Error('Method not implemented.');
+  async readOne(id: string): Promise<Car | null> {
+    const car = await this._carModel.findById(id).exec();
+    return car;
   }
 
   async update(arg1: string, arg2: object): Promise<Car | null> {
