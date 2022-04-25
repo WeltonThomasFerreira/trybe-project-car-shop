@@ -16,19 +16,17 @@ const getAllCarsController = new GetAllCarsController(carModel);
 const getCarByIdController = new GetCarByIdController(carModel, idCarValidator);
 
 carsRouter
-  .route('/')
-  .post(async (req: Request, res: Response) => {
-    const response = await registerCarController.handle(req);
-    return res.status(response.statusCode).json(response.body);
-  })
-  .get(async (_req: Request, res: Response) => {
+  .get('/', async (_req: Request, res: Response) => {
     const response = await getAllCarsController.handle();
     return res.status(response.statusCode).json(response.body);
+  })
+  .get('/:id', async (req: Request, res: Response) => {
+    const response = await getCarByIdController.handle(req);
+    return res.status(response.statusCode).json(response.body);
+  })
+  .post('/', async (req: Request, res: Response) => {
+    const response = await registerCarController.handle(req);
+    return res.status(response.statusCode).json(response.body);
   });
-
-carsRouter.route('/:id').get(async (req: Request, res: Response) => {
-  const response = await getCarByIdController.handle(req);
-  return res.status(response.statusCode).json(response.body);
-});
 
 export default carsRouter;
