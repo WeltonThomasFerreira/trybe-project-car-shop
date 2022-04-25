@@ -27,7 +27,7 @@ export default class GetCarByIdController implements IController<IRequest> {
       const error = await this._idCarValidator.validate(req.params);
       if (error) return badRequest(error);
       const response = await this._carModel.readOne(req.params.id as string);
-      if (!response) return notFound(INVALID_ID);
+      if (response === null) return notFound(INVALID_ID);
       return ok(response);
     } catch (error) {
       return serverError(error as Error);
