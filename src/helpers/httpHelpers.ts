@@ -3,7 +3,7 @@ import { IResponse } from '../interfaces/ResponseInterface';
 
 export const badRequest = (error: Error): IResponse => ({
   statusCode: 400,
-  body: { message: error.message },
+  body: { error: error.message },
 });
 
 export const serverError = (error: Error): IResponse => ({
@@ -19,4 +19,9 @@ export const created = (data: unknown): IResponse => ({
 export const ok = (data: unknown): IResponse => ({
   statusCode: 200,
   body: data,
+});
+
+export const notFound = (error: Error): IResponse => ({
+  statusCode: 404,
+  body: { error: error.message },
 });
