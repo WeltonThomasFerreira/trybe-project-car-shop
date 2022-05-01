@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-/* eslint-disable class-methods-use-this */
-import Joi, { Err } from 'joi';
+import Joi from 'joi';
 import {
   modelIsRequired,
   yearIsRequired,

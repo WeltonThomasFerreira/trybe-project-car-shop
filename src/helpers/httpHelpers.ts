@@ -21,6 +21,11 @@ export const ok = (data: unknown): Response => ({
   body: data,
 });
 
+export const noContent = (): Response => ({
+  statusCode: 204,
+  body: null,
+});
+
 export const notFound = (error: Error): Response => ({
   statusCode: 404,
   body: { error: error.message },

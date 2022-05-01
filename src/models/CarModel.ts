@@ -1,7 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-/* eslint-disable class-methods-use-this */
 import mongoose from 'mongoose';
 import { Car } from '../interfaces/CarInterface';
 import { Model } from '../interfaces/ModelInterface';
@@ -42,7 +38,8 @@ export default class CarModel implements Model<Car> {
       .exec();
   }
 
-  async delete(args: string): Promise<Car | null> {
-    throw new Error('Method not implemented.');
+  async delete(id: string): Promise<Car | null> {
+    await this._carModel.deleteOne({ id }).exec();
+    return null;
   }
 }
