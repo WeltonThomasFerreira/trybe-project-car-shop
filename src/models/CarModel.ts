@@ -33,8 +33,13 @@ export default class CarModel implements Model<Car> {
     return this._carModel.findById(id).exec();
   }
 
-  async update(arg1: string, arg2: object): Promise<Car | null> {
-    throw new Error('Method not implemented.');
+  async update(id: string, car: object): Promise<Car | null> {
+    return this._carModel
+      .findOneAndUpdate({ id }, car, {
+        new: true,
+        fields: '-__v',
+      })
+      .exec();
   }
 
   async delete(args: string): Promise<Car | null> {
