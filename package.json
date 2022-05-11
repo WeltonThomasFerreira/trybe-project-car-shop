@@ -10,7 +10,7 @@
     "test:dev": "mocha -r ts-node/register src/tests/unit/**/*.test.ts --exit -t 60000",
     "test:coverage": "nyc npm run test:dev",
     "mongo:up": "docker run --name car-shop -p 27017:27017 -d mongo",
-    "mongo:down": "docker stop -t 0 car-shop && docker rm car-shop",
+    "mongo:down": "docker stop -t 0 car-shop && docker rm car-shop -v",
     "mongo:start": "docker start car-shop",
     "mongo:stop": "docker stop -t 0 car-shop",
     "mongo:sh": "docker exec -it car-shop mongosh"
