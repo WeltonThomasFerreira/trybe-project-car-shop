@@ -43,3 +43,21 @@ export const readCar = [
     __v: 0,
   },
 ];
+
+export const readOneCar = {
+  request: {
+    params: {
+      id: '626ef334031614acad316ba8'
+    }
+  },
+  response:   {
+    _id: '626ef334031614acad316ba8',
+    model: 'Ferrari Maranello',
+    year: 1963,
+    color: 'red',
+    buyValue: 3500000,
+    doorsQty: 2,
+    seatsQty: 2,
+    __v: 0,
+  },
+}
