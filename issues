@@ -1,5 +1,0 @@
-- Construir uma factory genérica de routers e utilizar no arquivo server.ts:
-    - // import CustomRouter from './routes/Router';
-    - // const exampleRouter = new CustomRouter<Car>();
-    - // exampleRouter.addRoute(exampleController);
-    - Obs: Refatorar arquivos dentro das pasta src/routers
